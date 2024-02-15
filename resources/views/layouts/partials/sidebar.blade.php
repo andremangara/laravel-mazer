@@ -4,7 +4,7 @@
 
     <x-maz-sidebar-item name="Dashboard" :link="route('dashboard')" icon="bi bi-grid-fill"></x-maz-sidebar-item>
     <x-maz-sidebar-item name="Kategori" :link="route('kategori.index')" icon="bi bi-grid-fill"></x-maz-sidebar-item>
-    <x-maz-sidebar-item name="Produk" :link="route('dashboard')" icon="bi bi-grid-fill"></x-maz-sidebar-item>
+    <x-maz-sidebar-item name="Produk" :link="route('product.index')" icon="bi bi-grid-fill"></x-maz-sidebar-item>
     <x-maz-sidebar-item name="Pesanan" :link="route('dashboard')" icon="bi bi-grid-fill"></x-maz-sidebar-item>
     <x-maz-sidebar-item name="Component" icon="bi bi-stack">
         <x-maz-sidebar-sub-item name="Accordion" :link="route('components.accordion')"></x-maz-sidebar-sub-item>
