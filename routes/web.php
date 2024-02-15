@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //Kategori Route
     Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.tambah');
@@ -37,7 +38,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 
-
+    //Order Route
+    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order-tambah', [OrderController::class, 'create'])->name('order.tambah');
+    Route::post('/order-tambah/{id}', [OrderController::class, 'store'])->name('order.store');
+    Route::post('/order-tambah', [OrderItemController::class, 'store'])->name('orderitem.store');
+    Route::delete('/order-tambah/{id}', [OrderItemController::class, 'destroy'])->name('orderitem.delete');
     Route::group(['prefix' => 'components', 'as' => 'components.'], function () {
         Route::get('/alert', function () {
             return view('admin.component.alert');
