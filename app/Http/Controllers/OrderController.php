@@ -34,7 +34,7 @@ class OrderController extends Controller
     }
     public function create()
     {
-        $products = Product::all();
+        $products = Product::where("status", "Published")->get();
         $orderitems = OrderItem::where("id_order", null)->get();
         return view("order-tambah", compact("products", "orderitems"));
     }
